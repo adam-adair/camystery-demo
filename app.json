@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "colorblinder",
-    "slug": "colorblinder",
+    "name": "camystery",
+    "slug": "camystery",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,13 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aar2222.camystery"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.aar2222.camystery"
     },
     "web": {
       "favicon": "./assets/favicon.png"
