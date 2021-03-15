@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Button, Text } from "react-native";
 import DragImage from "./DragImage";
 
@@ -13,7 +13,16 @@ export default ({ squareSize }) => {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "flex-end" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "flex-end",
+        alignSelf: "center",
+        backgroundColor: "slateblue",
+        width: "95%",
+        paddingBottom: 150,
+      }}
+    >
       {rand.map((num, ix) => {
         return (
           <DragImage
@@ -23,11 +32,28 @@ export default ({ squareSize }) => {
             squareSize={squareSize}
             squareX={num % 3}
             squareY={Math.floor(num / 3)}
+            reset={{ reset: true }}
           />
         );
       })}
-      <Text>Drag the pictures!</Text>
-      <Button title="Reset" onPress={shufflePics} />
+      <Text
+        style={{
+          alignSelf: "center",
+          color: "white",
+          fontSize: 20,
+          paddingBottom: 20,
+        }}
+      >
+        Drag the pictures!
+      </Text>
+      <Button
+        title="Reset"
+        onPress={shufflePics}
+        style={{
+          color: "white",
+          backgroundColor: "red",
+        }}
+      />
     </View>
   );
 };

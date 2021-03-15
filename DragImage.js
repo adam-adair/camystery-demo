@@ -4,12 +4,13 @@ import { Image } from "react-native";
 import * as ImageManipulator from "expo-image-manipulator";
 import { Asset } from "expo-asset";
 
-export default ({ squareSize, initX, initY, squareX, squareY }) => {
+export default ({ squareSize, initX, initY, squareX, squareY, reset }) => {
   const [ready, setReady] = useState(false);
   const [image, setImage] = useState(null);
 
   useEffect(() => {
     (async () => {
+      setReady(false);
       const image = Asset.fromModule(require("./images/earth.jpg"));
       const croppedImage = await ImageManipulator.manipulateAsync(
         image.localUri || image.uri,
@@ -34,7 +35,7 @@ export default ({ squareSize, initX, initY, squareX, squareY }) => {
       setImage(croppedImage);
       setReady(true);
     })();
-  }, [squareX, squareY]);
+  }, [squareX, squareY, reset]);
 
   const _renderImage = () => {
     return (
@@ -48,7 +49,7 @@ export default ({ squareSize, initX, initY, squareX, squareY }) => {
       />
     );
   };
-
+  if (!ready) return null;
   return (
     <Draggable x={initX * squareSize} y={initY * squareSize}>
       {ready && image && _renderImage()}
